@@ -24,3 +24,35 @@
     max-width: 87.5em;
   }
 }
+
+.features-cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.features-cards-wrapper section > * + * {
+  margin-top: 2rem;
+}
+
+.features-cards-wrapper > section {
+  flex-basis: 30%;
+  margin: 1rem;
+  min-height: 582px;
+  border: solid thin slategray;
+  padding: 1rem;
+}
+
+.features-cards-wrapper figure > img {
+  margin: auto;
+  box-shadow: 0px 10px 20px 0px #7788996b;
+}
+
+.features-cards-wrapper figure > * + * {
+  margin-top: 1rem;
+}
+
+.features-cards-wrapper figcaption {
+  padding: 1rem;
+}

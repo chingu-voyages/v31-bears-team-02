@@ -31,13 +31,15 @@ const Hero = () => {
           <img src={backgroundImg.src} alt="test" />
         )}
         <div className="hero-caption">
-          <h1>Play, learn and explore Art!</h1>
+          <h1>Art lovers wanted!</h1>
           <p>
-            Join our community of art explorers and participate to put your art
-            knowledge to the test.
-            Create an account to play or sign in if you already have an account.
+            Join our community of art explorers and participate to put your
+            knowledge to the test. Will you accept the challenge? You can play
+            right away, and if you want to save your score you can sign up and
+            create an account. Let&apos;s get art-guessing!
           </p>
           <button type="button">Let&apos;s Play</button>
+          <button type="button">Sign up</button>
         </div>
       </div>
     </section>
