@@ -1,0 +1,26 @@
+.features {
+  width: 100%;
+  max-width: 45em;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media only screen and (min-width: 60em) {
+  .features {
+    max-width: 60em;
+  }
+}
+
+@media only screen and (min-width: 75em) {
+  .features {
+    max-width: 75em;
+  }
+}
+
+@media only screen and (min-width: 87.5em) {
+  .features {
+    max-width: 87.5em;
+  }
+}

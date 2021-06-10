@@ -2,12 +2,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
-import { HOME } from '../../../config/routes';
+import { USERHOME } from '../../../config/routes';
 
 const PublicRoute = ({ component: Component, isAuthenticated, ...rest }) => (
   <Route
     {...rest}
-    render={(props) => (isAuthenticated ? <Redirect to={HOME} /> : <Component {...props} />)}
+    // TODO: Review redirect for user on sign in
+    render={(props) => (isAuthenticated ? <Redirect to={USERHOME} /> : <Component {...props} />)}
   />
 );
 
