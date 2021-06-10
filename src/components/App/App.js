@@ -11,6 +11,7 @@ import NotFound from "../NotFound";
 import Modal from "../Modal/Modal";
 import "./App.css";
 import Footer from "../Footer/Footer";
+import Game from "../Game/Game";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -37,6 +38,7 @@ function App() {
           component={HomePage}
           isAuthenticated={isAuthenticated}
         />
+        <PublicRoute path="/game" component={Game} />
         <PublicRoute
           path="*"
           component={NotFound}
