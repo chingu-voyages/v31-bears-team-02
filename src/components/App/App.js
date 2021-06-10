@@ -7,6 +7,8 @@ import HomePage from "../HomePage";
 import NotFound from "../NotFound";
 import "./App.css";
 import TopNavBar from "../TopNavBar";
+import Game from "../Game/Game";
+
 
 function App() {
   // eslint-disable-next-line no-unused-vars
@@ -20,6 +22,10 @@ function App() {
           path={HOME}
           component={HomePage}
           isAuthenticated={isAuthenticated}
+        />
+        <PublicRoute
+          path="/game"
+          component={Game}
         />
         <PublicRoute
           path="*"
