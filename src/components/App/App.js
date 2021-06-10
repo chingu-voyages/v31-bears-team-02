@@ -8,14 +8,21 @@ import TopNavBar from '../TopNavBar';
 import HomePage from '../HomePage';
 // 404 page
 import NotFound from '../NotFound';
-
+import Modal from '../Modal/Modal';
 import './App.css';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
+
   return (
     <div className="App">
-      <TopNavBar onLogin={setIsAuthenticated} isAuthenticated={isAuthenticated} />
+      <TopNavBar
+        onLogin={setIsAuthenticated}
+        isAuthenticated={isAuthenticated}
+        setModalOpen={setModalOpen}
+        modalOpen={modalOpen}
+      />
       <Switch>
         <PublicRoute
           exact
@@ -31,6 +38,12 @@ function App() {
         />
         <PublicRoute path="*" component={NotFound} isAuthenticated={isAuthenticated} />
       </Switch>
+      <Modal
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+      >
+        <h2>Sign up</h2>
+      </Modal>
     </div>
   );
 }
