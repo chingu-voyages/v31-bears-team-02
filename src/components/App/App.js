@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { Switch } from 'react-router-dom';
+import * as React from "react";
+import { Switch } from "react-router-dom";
 // Using a 'routes' file as single source of truth for route strings
-import { HOME, USERHOME } from '../../config/routes';
+import { HOME, USERHOME } from "../../config/routes";
 // Wrapper components to handle redirects and access to routes that need auth
-import { PrivateRoute, PublicRoute } from '../routes';
-import TopNavBar from '../TopNavBar';
-import HomePage from '../HomePage';
+import { PrivateRoute, PublicRoute } from "../routes";
+import TopNavBar from "../TopNavBar";
+import HomePage from "../HomePage";
 // 404 page
-import NotFound from '../NotFound';
-import Modal from '../Modal/Modal';
-import './App.css';
-import Footer from '../Footer/Footer';
+import NotFound from "../NotFound";
+import Modal from "../Modal/Modal";
+import "./App.css";
+import Footer from "../Footer/Footer";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -37,13 +37,14 @@ function App() {
           component={HomePage}
           isAuthenticated={isAuthenticated}
         />
-        <PublicRoute path="*" component={NotFound} isAuthenticated={isAuthenticated} />
+        <PublicRoute
+          path="*"
+          component={NotFound}
+          isAuthenticated={isAuthenticated}
+        />
       </Switch>
       <Footer />
-      <Modal
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-      >
+      <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <h2>Sign up</h2>
       </Modal>
     </div>
