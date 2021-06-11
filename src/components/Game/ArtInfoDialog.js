@@ -1,4 +1,4 @@
-const ArtInfoDialog = ({ setRoundCounter, setAnswerChosen }) => {
+const ArtInfoDialog = ({ setRoundCounter, setAnswerChosen, artInfo }) => {
   function handleClick(e) {
     setRoundCounter((round) => round + 1);
     setAnswerChosen(false);
@@ -6,6 +6,22 @@ const ArtInfoDialog = ({ setRoundCounter, setAnswerChosen }) => {
   return (
     <>
       Art info Dialog
+      <ul>
+        <li>Title: {artInfo.title}</li>
+
+        <li>
+          Artist: {artInfo.artistDisplayName} ({artInfo.artistBeginDate} -
+          {artInfo.artistEndDate})
+        </li>
+
+        {artInfo.objectDate && <li>Date: {artInfo.objectDate}</li>}
+
+        <li>
+          <a href="https://www.metmuseum.org/art/collection/search/436648">
+            More info
+          </a>
+        </li>
+      </ul>
       <button onClick={handleClick}>next</button>
     </>
   );

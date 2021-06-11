@@ -48,6 +48,7 @@ const Game = () => {
           <ArtInfoDialog
             setAnswerChosen={setAnswerChosen}
             setRoundCounter={setRoundCounter}
+            artInfo={correctArt}
           />
         ) : (
           <GameUI
