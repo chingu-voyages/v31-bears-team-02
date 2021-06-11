@@ -2,10 +2,17 @@ import Timer from "./Timer";
 import RoundCounter from "./RoundCounter";
 import ChoiceButton from "./ChoiceButton";
 
-const GameUI = ({ art, correctArt }) => {
+const GameUI = ({
+  art,
+  correctArt,
+  roundCounter,
+  setRoundCounter,
+  setAnswerChosen,
+}) => {
   const handleClick = (e) => {
     if (e.target.value === correctArt.artistDisplayName) {
       console.log("correct!", e.target.value);
+      setAnswerChosen((answer) => !answer);
     }
   };
 
@@ -23,7 +30,7 @@ const GameUI = ({ art, correctArt }) => {
     <div className="gameui-container">
       <Timer></Timer>
       <div className="multiple-choice">{artButtons}</div>
-      <RoundCounter></RoundCounter>
+      <RoundCounter roundCounter={roundCounter}></RoundCounter>
     </div>
   );
 };
