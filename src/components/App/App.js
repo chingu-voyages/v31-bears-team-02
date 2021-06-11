@@ -9,10 +9,9 @@ import "./App.css";
 import TopNavBar from "../TopNavBar";
 import Game from "../Game/Game";
 
-
 function App() {
   // eslint-disable-next-line no-unused-vars
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   return (
     <div className="App">
       <TopNavBar />
@@ -21,16 +20,13 @@ function App() {
           exact
           path={HOME}
           component={HomePage}
-          isAuthenticated={isAuthenticated}
+          // isAuthenticated={isAuthenticated}
         />
-        <PublicRoute
-          path="/game"
-          component={Game}
-        />
+        <PublicRoute path="/game" component={Game} />
         <PublicRoute
           path="*"
           component={NotFound}
-          isAuthenticated={isAuthenticated}
+          // isAuthenticated={isAuthenticated}
         />
       </Switch>
     </div>
