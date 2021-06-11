@@ -2,10 +2,13 @@ import { useEffect, useState } from "react";
 import Art from "./Art";
 import "./Game.css";
 import GameUI from "./GameUI";
+import ArtInfoDialog from "./ArtInfoDialog";
 
 const Game = () => {
   const [art, setArt] = useState(null);
   const [correctArt, setCorrectArt] = useState(null);
+  const [roundCounter, setRoundCounter] = useState(1);
+  const [answerChosen, setAnswerChosen] = useState(false);
 
   useEffect(() => {
     const url =
@@ -34,12 +37,27 @@ const Game = () => {
       setArt(randomArt);
     };
     artFetch();
-  }, []);
+  }, [roundCounter]);
 
   return (
     <div className="game-screen">
       {art && correctArt && <Art correctArt={correctArt} art={art} />}
-      {art && correctArt && <GameUI correctArt={correctArt} art={art}></GameUI>}
+      {art &&
+        correctArt &&
+        (answerChosen ? (
+          <ArtInfoDialog
+            setAnswerChosen={setAnswerChosen}
+            setRoundCounter={setRoundCounter}
+          />
+        ) : (
+          <GameUI
+            correctArt={correctArt}
+            art={art}
+            roundCounter={roundCounter}
+            setRoundCounter={setRoundCounter}
+            setAnswerChosen={setAnswerChosen}
+          />
+        ))}
     </div>
   );
 };
