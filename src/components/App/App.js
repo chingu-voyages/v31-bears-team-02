@@ -42,7 +42,7 @@ function App() {
         <PublicRoute
           path="*"
           component={NotFound}
-          isAuthenticated={isAuthenticated}
+          // isAuthenticated={isAuthenticated}
         />
       </Switch>
       <Footer />

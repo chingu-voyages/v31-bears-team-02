@@ -1,18 +1,31 @@
 import Timer from "./Timer";
-import RoundCounter from "./RoundCounter"
-const GameUI = () => {
+import RoundCounter from "./RoundCounter";
+import ChoiceButton from "./ChoiceButton";
+
+const GameUI = ({ art, correctArt }) => {
+  const handleClick = (e) => {
+    if (e.target.value === correctArt.artistDisplayName) {
+      console.log("correct!", e.target.value);
+    }
+  };
+
+  const artButtons = art.map((art) => {
     return (
-        <div className="gameui-container">
-            <Timer></Timer>
-            <div className="multiple-choice">
-                <button>option 1</button>
-                <button>option 2</button>
-                <button>option 3</button>
-                <button>option 4</button>
-            </div>
-            <RoundCounter></RoundCounter>
-        </div> 
-    )
+      <ChoiceButton
+        key={art.artistDisplayName}
+        artistName={art.artistDisplayName}
+        handleClick={handleClick}
+      />
+    );
+  });
+
+  return (
+    <div className="gameui-container">
+      <Timer></Timer>
+      <div className="multiple-choice">{artButtons}</div>
+      <RoundCounter></RoundCounter>
+    </div>
+  );
 };
 
 export default GameUI;
