@@ -8,6 +8,7 @@ const GameUI = ({
   roundCounter,
   setRoundCounter,
   setAnswerChosen,
+  timer,
 }) => {
   const handleClick = (e) => {
     if (e.target.value === correctArt.artistDisplayName) {
@@ -28,7 +29,7 @@ const GameUI = ({
 
   return (
     <div className="gameui-container">
-      <Timer></Timer>
+      <Timer timer={timer}></Timer>
       <div className="multiple-choice">{artButtons}</div>
       <RoundCounter roundCounter={roundCounter}></RoundCounter>
     </div>

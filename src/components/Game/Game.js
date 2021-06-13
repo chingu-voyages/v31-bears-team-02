@@ -9,6 +9,7 @@ const Game = () => {
   const [correctArt, setCorrectArt] = useState(null);
   const [roundCounter, setRoundCounter] = useState(1);
   const [answerChosen, setAnswerChosen] = useState(false);
+  const [timer, setTimer] = useState(10);
 
   useEffect(() => {
     const url =
@@ -35,9 +36,20 @@ const Game = () => {
 
       setCorrectArt(randomArt[Math.floor(Math.random() * 4)]);
       setArt(randomArt);
+      setTimer(10);
     };
     artFetch();
   }, [roundCounter]);
+
+  useEffect(() => {
+    if (!answerChosen) {
+      timer > 0 && setTimeout(() => setTimer(timer - 1), 1000);
+    }
+
+    if (timer === 0) {
+      setAnswerChosen(true);
+    }
+  }, [timer]);
 
   return (
     <div className="game-screen">
@@ -57,6 +69,7 @@ const Game = () => {
             roundCounter={roundCounter}
             setRoundCounter={setRoundCounter}
             setAnswerChosen={setAnswerChosen}
+            timer={timer}
           />
         ))}
     </div>
