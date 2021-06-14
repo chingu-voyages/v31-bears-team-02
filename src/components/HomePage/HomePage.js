@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Features from '../Features/Features';
-import Footer from '../Footer/Footer';
 import Hero from '../Hero/Hero';
 import HowTo from '../HowTo';
 
@@ -9,7 +8,6 @@ const HomePage = () => (
     <Hero />
     <Features />
     <HowTo />
-    <Footer />
   </article>
 );
 

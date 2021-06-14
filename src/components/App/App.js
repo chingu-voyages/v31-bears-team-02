@@ -10,6 +10,7 @@ import HomePage from '../HomePage';
 import NotFound from '../NotFound';
 import Modal from '../Modal/Modal';
 import './App.css';
+import Footer from '../Footer/Footer';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -38,6 +39,7 @@ function App() {
         />
         <PublicRoute path="*" component={NotFound} isAuthenticated={isAuthenticated} />
       </Switch>
+      <Footer />
       <Modal
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
