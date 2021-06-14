@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 // Using a 'routes' file as single source of truth for route strings
 import { HOME, USERHOME } from "../../config/routes";
 // Wrapper components to handle redirects and access to routes that need auth
@@ -26,7 +26,7 @@ function App() {
         modalOpen={modalOpen}
       />
       <Switch>
-        <PublicRoute
+        <Route
           exact
           path={HOME}
           component={HomePage}
@@ -38,11 +38,11 @@ function App() {
           component={HomePage}
           isAuthenticated={isAuthenticated}
         />
-        <PublicRoute path="/game" component={Game} />
-        <PublicRoute
+        <Route path="/game" component={Game} />
+        <PrivateRoute
           path="*"
           component={NotFound}
-          // isAuthenticated={isAuthenticated}
+          isAuthenticated={isAuthenticated}
         />
       </Switch>
       <Footer />

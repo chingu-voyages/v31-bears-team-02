@@ -41,9 +41,8 @@ const Game = () => {
 
   return (
     <div className="game-screen">
-      {art && correctArt && <Art correctArt={correctArt} art={art} />}
+      {art && <Art correctArt={correctArt} art={art} />}
       {art &&
-        correctArt &&
         (answerChosen ? (
           <ArtInfoDialog
             setAnswerChosen={setAnswerChosen}
