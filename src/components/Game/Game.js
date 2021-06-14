@@ -9,6 +9,7 @@ const Game = () => {
   const [correctArt, setCorrectArt] = useState(null);
   const [roundCounter, setRoundCounter] = useState(1);
   const [answerChosen, setAnswerChosen] = useState(false);
+  const [roundArt, setRoundArt] = useState(null);
 
   useEffect(() => {
     const url =
@@ -18,7 +19,7 @@ const Game = () => {
       const data = await res.json();
       console.log(data);
       const objectIds = [];
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < 40; i++) {
         objectIds.push(
           data.objectIDs[[Math.floor(Math.random() * data.objectIDs.length)]]
         );
@@ -33,27 +34,40 @@ const Game = () => {
         })
       );
 
-      setCorrectArt(randomArt[Math.floor(Math.random() * 4)]);
+      let firstRoundArt = [];
+      for (let i = 0; i < 4; i++) {
+        firstRoundArt.push(
+          randomArt[[Math.floor(Math.random() * randomArt.length)]]
+        );
+      }
+
+      setCorrectArt(firstRoundArt[Math.floor(Math.random() * 4)]);
       setArt(randomArt);
+      setRoundArt(firstRoundArt);
     };
     artFetch();
-  }, [roundCounter]);
+  }, []);
+
+  useEffect(() => {
+    roundArt && setCorrectArt(roundArt[Math.floor(Math.random() * 4)]);
+    console.log("round:", roundArt);
+  }, [roundCounter, roundArt]);
 
   return (
     <div className="game-screen">
-      {art && <Art correctArt={correctArt} art={art} />}
-      {art &&
+      {roundArt && correctArt && <Art correctArt={correctArt} art={art} />}
+      {roundArt &&
         (answerChosen ? (
           <ArtInfoDialog
             setAnswerChosen={setAnswerChosen}
             setRoundCounter={setRoundCounter}
             artInfo={correctArt}
-            setArt={setArt}
+            setCorrectArt={setCorrectArt}
           />
         ) : (
           <GameUI
             correctArt={correctArt}
-            art={art}
+            roundArt={roundArt}
             roundCounter={roundCounter}
             setRoundCounter={setRoundCounter}
             setAnswerChosen={setAnswerChosen}

@@ -3,13 +3,13 @@ import RoundCounter from "./RoundCounter";
 import ChoiceButton from "./ChoiceButton";
 import { useEffect, useState } from "react";
 const GameUI = ({
-  art,
   correctArt,
   roundCounter,
   setRoundCounter,
   setAnswerChosen,
   answerChosen,
   setArt,
+  roundArt,
 }) => {
   const [timer, setTimer] = useState(10);
 
@@ -48,7 +48,7 @@ const GameUI = ({
     }
   };
 
-  const artButtons = art.map((art, index) => {
+  const artButtons = roundArt.map((art, index) => {
     return (
       <ChoiceButton
         key={art.artistDisplayName + index}

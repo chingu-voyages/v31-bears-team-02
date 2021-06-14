@@ -3,11 +3,12 @@ const ArtInfoDialog = ({
   setAnswerChosen,
   artInfo,
   setArt,
+  setCorrectArt,
 }) => {
   function handleClick(e) {
     setRoundCounter((round) => round + 1);
     setAnswerChosen(false);
-    setArt(null);
+    setCorrectArt(null);
   }
   return (
     <>
