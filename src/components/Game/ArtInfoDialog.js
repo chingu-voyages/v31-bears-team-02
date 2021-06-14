@@ -1,7 +1,13 @@
-const ArtInfoDialog = ({ setRoundCounter, setAnswerChosen, artInfo }) => {
+const ArtInfoDialog = ({
+  setRoundCounter,
+  setAnswerChosen,
+  artInfo,
+  setArt,
+}) => {
   function handleClick(e) {
     setRoundCounter((round) => round + 1);
     setAnswerChosen(false);
+    setArt(null);
   }
   return (
     <>
