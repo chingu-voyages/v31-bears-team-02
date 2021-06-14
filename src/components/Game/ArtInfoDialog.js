@@ -23,7 +23,7 @@ const ArtInfoDialog = ({
         {artInfo.objectDate && <li>Date: {artInfo.objectDate}</li>}
 
         <li>
-          <a href="https://www.metmuseum.org/art/collection/search/436648">
+          <a href={artInfo.objectURL} rel="noreferrer" target="_blank">
             More info
           </a>
         </li>
