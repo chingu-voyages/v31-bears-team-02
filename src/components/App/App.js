@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 //
 import { HOME } from "../../config/routes";
-import { PublicRoute } from "../routes";
+// import { Route } from "../routes";
 import HomePage from "../HomePage";
 import NotFound from "../NotFound";
 import "./App.css";
@@ -16,14 +16,14 @@ function App() {
     <div className="App">
       <TopNavBar />
       <Switch>
-        <PublicRoute
+        <Route
           exact
           path={HOME}
           component={HomePage}
           // isAuthenticated={isAuthenticated}
         />
-        <PublicRoute path="/game" component={Game} />
-        <PublicRoute
+        <Route path="/game" component={Game} />
+        <Route
           path="*"
           component={NotFound}
           // isAuthenticated={isAuthenticated}

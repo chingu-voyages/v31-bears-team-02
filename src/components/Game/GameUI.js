@@ -13,23 +13,8 @@ const GameUI = ({
 }) => {
   const [timer, setTimer] = useState(10);
 
-  // useEffect(() => {
-  //   if (!answerChosen) {
-  //     timer > 0 && setTimeout(() => setTimer((timer) => timer - 1), 1000);
-  //   }
-
-  //   if (timer === 0) {
-  //     setAnswerChosen(true);
-  //   }
-  // }, [timer]);
-  // let timerInterval = setInterval(() => setTimer((timer) => timer - 1), 1000);
-
-  // useEffect(() => {
-  //   timerInterval();
-  // }, [timerInterval]);
-
-  let timerInterval;
   useEffect(() => {
+    let timerInterval;
     function startTimer() {
       timerInterval = setInterval(incrementTimer, 1000);
     }
@@ -39,18 +24,22 @@ const GameUI = ({
     }
 
     startTimer();
-  }, []);
 
-  useEffect(() => {
     function endTimer() {
       clearInterval(timerInterval);
       setTimer(0);
     }
-    if (timer === 0) {
+
+    return () => {
       endTimer();
+    };
+  }, []);
+
+  useEffect(() => {
+    if (timer === 0) {
       setAnswerChosen(true);
     }
-  }, [timer]);
+  }, [timer, setAnswerChosen]);
 
   const handleClick = (e) => {
     if (e.target.value === correctArt.artistDisplayName) {
@@ -59,10 +48,10 @@ const GameUI = ({
     }
   };
 
-  const artButtons = art.map((art) => {
+  const artButtons = art.map((art, index) => {
     return (
       <ChoiceButton
-        key={art.artistDisplayName}
+        key={art.artistDisplayName + index}
         artistName={art.artistDisplayName}
         handleClick={handleClick}
       />
