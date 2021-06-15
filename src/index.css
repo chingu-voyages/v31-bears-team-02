@@ -88,6 +88,12 @@ nav > ul {
   display: flex;
 }
 
-nav > ul > li + li {
+nav li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+nav li + li {
   margin-inline-start: 1rem;
 }

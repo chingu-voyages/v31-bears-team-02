@@ -7,6 +7,7 @@ import { HOME } from '../../../config/routes';
 const PrivateRoute = ({ component: Component, isAuthenticated, ...rest }) => (
   <Route
     {...rest}
+    // TODO: Review redirect for non-signed users
     render={(props) => (isAuthenticated ? <Component {...props} /> : <Redirect to={HOME} />)}
   />
 );

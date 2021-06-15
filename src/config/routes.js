@@ -1,2 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const HOME = '/';
+// TODO: Assign correct route for signed up users
+export const USERHOME = '/user/:userId';
