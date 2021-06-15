@@ -26,7 +26,7 @@ function App() {
         modalOpen={modalOpen}
       />
       <Switch>
-        <Route
+        <PublicRoute
           exact
           path={HOME}
           component={HomePage}
