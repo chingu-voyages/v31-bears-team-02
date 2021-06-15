@@ -65,6 +65,7 @@ const Game = () => {
     <div className="game-screen">
       {roundArt && correctArt && <Art correctArt={correctArt} art={art} />}
       {roundArt &&
+        art &&
         (answerChosen ? (
           <ArtInfoDialog
             setAnswerChosen={setAnswerChosen}
