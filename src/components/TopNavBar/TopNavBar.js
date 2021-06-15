@@ -1,17 +1,18 @@
-import * as React from 'react';
-import './TopNavBar.css';
+import * as React from "react";
+import "./TopNavBar.css";
+import { Link } from "react-router-dom";
 
 const TopNavBar = () => (
   <header className="top-nav-header">
     <h2>ArtGuessr</h2>
+
     <nav>
       <ul>
         <li>
-          Sign Up
+          <Link to="/game">Play</Link>
         </li>
-        <li>
-          Sign in
-        </li>
+        <li>Sign Up</li>
+        <li>Sign in</li>
       </ul>
     </nav>
   </header>
