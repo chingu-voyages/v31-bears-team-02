@@ -10,6 +10,9 @@ const Game = () => {
   const [roundCounter, setRoundCounter] = useState(0);
   const [answerChosen, setAnswerChosen] = useState(false);
   const [roundArt, setRoundArt] = useState(null);
+  const [roundHistory, setRoundHistory] = useState([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+  ]);
 
   useEffect(() => {
     const url =
@@ -76,8 +79,11 @@ const Game = () => {
             setRoundCounter={setRoundCounter}
             setAnswerChosen={setAnswerChosen}
             answerChosen={answerChosen}
+            roundHistory={roundHistory}
+            setRoundHistory={setRoundHistory}
           />
         ))}
+      <div>{roundHistory}</div>
     </div>
   );
 };
