@@ -3,6 +3,7 @@ import Art from "./Art";
 import "./Game.css";
 import GameUI from "./GameUI";
 import ArtInfoDialog from "./ArtInfoDialog";
+import GameOver from "./GameOver";
 
 const Game = () => {
   const [art, setArt] = useState(null);
@@ -23,10 +24,6 @@ const Game = () => {
     10,
   ]);
   const [gameOver, setGameOver] = useState(false);
-
-  function reloadPage() {
-    window.location.reload();
-  }
 
   useEffect(() => {
     const url =
@@ -76,9 +73,7 @@ const Game = () => {
   if (gameOver) {
     return (
       <div className="game-screen">
-        <h3>Game Over</h3>
-        <h3>Total Correct: {roundHistory.filter((x) => x === "✔").length}</h3>
-        <button onClick={reloadPage}>Play again</button>
+        <GameOver roundHistory={roundHistory} />
       </div>
     );
   }
