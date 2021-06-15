@@ -11,7 +11,16 @@ const Game = () => {
   const [answerChosen, setAnswerChosen] = useState(false);
   const [roundArt, setRoundArt] = useState(null);
   const [roundHistory, setRoundHistory] = useState([
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
   ]);
 
   useEffect(() => {
@@ -83,7 +92,7 @@ const Game = () => {
             setRoundHistory={setRoundHistory}
           />
         ))}
-      <div>{roundHistory}</div>
+      {art && <div>{roundHistory}</div>}
     </div>
   );
 };
