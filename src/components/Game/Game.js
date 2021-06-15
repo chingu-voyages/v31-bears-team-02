@@ -92,7 +92,7 @@ const Game = () => {
             setRoundHistory={setRoundHistory}
           />
         ))}
-      {art && <div>{roundHistory}</div>}
+      {art && <div>{roundHistory.join(" - ")}</div>}
     </div>
   );
 };
