@@ -20,11 +20,17 @@ const Game = () => {
       const data = await res.json();
       console.log(data);
       const objectIds = [];
+
       for (let i = 0; i < 40; i++) {
-        objectIds.push(
-          data.objectIDs[[Math.floor(Math.random() * data.objectIDs.length)]]
-        );
+        // makes sure all object ids are unique
+        const objectID = data.objectIDs.splice(
+          Math.floor(Math.random() * data.objectIDs.length),
+          1
+        )[0];
+        objectIds.push(objectID);
       }
+      console.log("objectIds:", objectIds);
+
       const randomArt = await Promise.all(
         objectIds.map(async (id) => {
           const res = await fetch(
