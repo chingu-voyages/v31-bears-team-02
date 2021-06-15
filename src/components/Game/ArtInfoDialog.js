@@ -4,11 +4,16 @@ const ArtInfoDialog = ({
   artInfo,
   setArt,
   setCorrectArt,
+  setGameOver,
+  roundCounter,
 }) => {
   function handleClick(e) {
     setRoundCounter((round) => round + 1);
     setAnswerChosen(false);
     setCorrectArt(null);
+    if (roundCounter === 10) {
+      setGameOver(true);
+    }
   }
   return (
     <>

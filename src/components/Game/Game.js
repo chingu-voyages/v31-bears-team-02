@@ -22,6 +22,11 @@ const Game = () => {
     9,
     10,
   ]);
+  const [gameOver, setGameOver] = useState(false);
+
+  function reloadPage() {
+    window.location.reload();
+  }
 
   useEffect(() => {
     const url =
@@ -68,6 +73,16 @@ const Game = () => {
     }
   }, [roundCounter]);
 
+  if (gameOver) {
+    return (
+      <div className="game-screen">
+        <h3>Game Over</h3>
+        <h3>Total Correct: {roundHistory.filter((x) => x === "✔").length}</h3>
+        <button onClick={reloadPage}>Play again</button>
+      </div>
+    );
+  }
+
   return (
     <div className="game-screen">
       {roundArt && correctArt && <Art correctArt={correctArt} art={art} />}
@@ -79,6 +94,8 @@ const Game = () => {
             setRoundCounter={setRoundCounter}
             artInfo={correctArt}
             setCorrectArt={setCorrectArt}
+            setGameOver={setGameOver}
+            roundCounter={roundCounter}
           />
         ) : (
           <GameUI
