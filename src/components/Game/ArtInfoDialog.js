@@ -4,11 +4,13 @@ const ArtInfoDialog = ({
   artInfo,
   setArt,
   setCorrectArt,
+  hasGeneratedRound,
 }) => {
   function handleClick(e) {
     setRoundCounter((round) => round + 1);
     setAnswerChosen(false);
     setCorrectArt(null);
+    hasGeneratedRound.current = false;
   }
   return (
     <>

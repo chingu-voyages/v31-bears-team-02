@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Art from "./Art";
 import "./Game.css";
 import GameUI from "./GameUI";
@@ -10,6 +10,7 @@ const Game = () => {
   const [roundCounter, setRoundCounter] = useState(1);
   const [answerChosen, setAnswerChosen] = useState(false);
   const [roundArt, setRoundArt] = useState(null);
+  const hasGeneratedRound = useRef(false);
 
   useEffect(() => {
     const url =
@@ -37,7 +38,7 @@ const Game = () => {
       let firstRoundArt = [];
       for (let i = 0; i < 4; i++) {
         firstRoundArt.push(
-          randomArt[[Math.floor(Math.random() * randomArt.length)]]
+          randomArt[Math.floor(Math.random() * randomArt.length)]
         );
       }
 
@@ -49,9 +50,16 @@ const Game = () => {
   }, []);
 
   useEffect(() => {
-    roundArt && setCorrectArt(roundArt[Math.floor(Math.random() * 4)]);
-    console.log("round:", roundArt);
-  }, [roundCounter, roundArt]);
+    if (!hasGeneratedRound.current) {
+      const newRound = [];
+      for (let i = 0; i < 4; i++) {
+        art && newRound.push(art[[Math.floor(Math.random() * art.length)]]);
+      }
+      setRoundArt(newRound);
+      setCorrectArt(newRound[Math.floor(Math.random() * 4)]);
+      hasGeneratedRound.current = true;
+    }
+  }, [roundCounter, art]);
 
   return (
     <div className="game-screen">
@@ -63,6 +71,7 @@ const Game = () => {
             setRoundCounter={setRoundCounter}
             artInfo={correctArt}
             setCorrectArt={setCorrectArt}
+            hasGeneratedRound={hasGeneratedRound}
           />
         ) : (
           <GameUI
