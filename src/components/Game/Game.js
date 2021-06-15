@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Art from "./Art";
 import "./Game.css";
 import GameUI from "./GameUI";
@@ -7,10 +7,9 @@ import ArtInfoDialog from "./ArtInfoDialog";
 const Game = () => {
   const [art, setArt] = useState(null);
   const [correctArt, setCorrectArt] = useState(null);
-  const [roundCounter, setRoundCounter] = useState(1);
+  const [roundCounter, setRoundCounter] = useState(0);
   const [answerChosen, setAnswerChosen] = useState(false);
   const [roundArt, setRoundArt] = useState(null);
-  const hasGeneratedRound = useRef(false);
 
   useEffect(() => {
     const url =
@@ -41,31 +40,21 @@ const Game = () => {
         })
       );
 
-      let firstRoundArt = [];
-      for (let i = 0; i < 4; i++) {
-        firstRoundArt.push(
-          randomArt[Math.floor(Math.random() * randomArt.length)]
-        );
-      }
-
-      setCorrectArt(firstRoundArt[Math.floor(Math.random() * 4)]);
       setArt(randomArt);
-      setRoundArt(firstRoundArt);
+      setRoundCounter(1);
     };
     artFetch();
   }, []);
 
   useEffect(() => {
-    if (!hasGeneratedRound.current) {
-      const newRound = [];
-      for (let i = 0; i < 4; i++) {
-        art && newRound.push(art[[Math.floor(Math.random() * art.length)]]);
-      }
-      setRoundArt(newRound);
-      setCorrectArt(newRound[Math.floor(Math.random() * 4)]);
-      hasGeneratedRound.current = true;
+    if (art) {
+      if (art.length === 0) console.log("game over");
+      const newRoundArt = art.slice(0, 4);
+      setRoundArt(newRoundArt);
+      setArt((art) => art.slice(4));
+      setCorrectArt(newRoundArt[Math.floor(Math.random() * 4)]);
     }
-  }, [roundCounter, art]);
+  }, [roundCounter]);
 
   return (
     <div className="game-screen">
@@ -78,7 +67,6 @@ const Game = () => {
             setRoundCounter={setRoundCounter}
             artInfo={correctArt}
             setCorrectArt={setCorrectArt}
-            hasGeneratedRound={hasGeneratedRound}
           />
         ) : (
           <GameUI
